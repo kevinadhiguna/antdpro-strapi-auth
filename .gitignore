@@ -38,3 +38,6 @@ screenshot
 .eslintcache
 
 build
+
+# Application Configuration
+src/appConfig.json
