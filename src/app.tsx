@@ -9,6 +9,7 @@ import type { ResponseError } from 'umi-request';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
+import appConfig from './appConfig.json';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
 
@@ -134,3 +135,13 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     ...initialState?.settings,
   };
 };
+
+// == This 'httpLink' does not allow to upload a file ==
+// const httpLink = createHttpLink({
+//   uri: appConfig.graphqlUri,
+// });
+
+// == Modified 'httpLink' so it is able to upload a file ==
+const httpLink = createUploadLink({
+  uri: appConfig.graphqlUri,
+});
