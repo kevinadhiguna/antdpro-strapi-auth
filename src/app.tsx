@@ -1,3 +1,4 @@
+import React from 'react';
 import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
 import { PageLoading } from '@ant-design/pro-layout';
 import { notification } from 'antd';
@@ -13,7 +14,6 @@ import appConfig from './appConfig.json';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
-import React from 'react';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -157,8 +157,8 @@ const authLink = setContext((_, { headers }) => {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : '',
-    }
-  }
+    },
+  };
 });
 
 const client = new ApolloClient({
@@ -167,5 +167,5 @@ const client = new ApolloClient({
 });
 
 export function rootContainer(container: React.Component) {
-  return <ApolloProvider client={client}>{container}</ApolloProvider>
+  return <ApolloProvider client={client}>{container}</ApolloProvider>;
 }
