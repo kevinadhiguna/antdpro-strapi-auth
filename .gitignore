@@ -17,7 +17,7 @@ yarn-error.log
 
 /coverage
 .idea
-yarn.lock
+# yarn.lock # <- commit 'yarn.lock' as it will be involved in CI/CD process. 
 package-lock.json
 *bak
 .vscode
