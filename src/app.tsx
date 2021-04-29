@@ -11,6 +11,7 @@ import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
 import appConfig from './appConfig.json';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -144,4 +145,17 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
 // == Modified 'httpLink' so it is able to upload a file ==
 const httpLink = createUploadLink({
   uri: appConfig.graphqlUri,
+});
+
+const authLink = setContext((_, { headers }) => {
+  // Get JWT from localStorage if exists
+  const token = localStorage.getItem('jwt');
+
+  // return header to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    }
+  }
 });
