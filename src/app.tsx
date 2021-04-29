@@ -13,6 +13,7 @@ import appConfig from './appConfig.json';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
+import React from 'react';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -164,3 +165,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink as any) as any,
   cache: new InMemoryCache(),
 });
+
+export function rootContainer(container: React.Component) {
+  return <ApolloProvider client={client}>{container}</ApolloProvider>
+}
