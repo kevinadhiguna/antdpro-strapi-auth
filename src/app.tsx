@@ -10,6 +10,7 @@ import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import { createUploadLink } from 'apollo-upload-client';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
