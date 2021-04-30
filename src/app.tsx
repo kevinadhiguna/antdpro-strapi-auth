@@ -192,12 +192,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
         } else {
           console.log('You have not logged in, Login first!');
 
-          Swal.fire({
-            icon: 'warning',
-            title: 'Oops..',
-            text: 'Please login first!',
-          });
-
+          // Ask users to login first before visitng other pages
           history.push(loginPath);
         }
       }
