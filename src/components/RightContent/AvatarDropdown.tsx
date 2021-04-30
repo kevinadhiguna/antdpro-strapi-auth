@@ -53,7 +53,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     [initialState, setInitialState],
   );
 
-  const loading = (
+  const loadingSpin = (
     <span className={`${styles.action} ${styles.account}`}>
       <Spin
         size="small"
@@ -66,13 +66,13 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   );
 
   if (!initialState) {
-    return loading;
+    return loadingSpin;
   }
 
   const { currentUser } = initialState;
 
   if (!currentUser || !currentUser.name) {
-    return loading;
+    return loadingSpin;
   }
 
   const menuHeaderDropdown = (
@@ -101,11 +101,13 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   // Get user ID from local storage
   const id = localStorage.getItem('id');
 
-  const { loading, error, data } = useQuery(ME, {
+  let { loading, error, data } = useQuery(ME, {
     variables: {
       id
     }
   });
+
+  if (loading) return loadingSpin;
 
   // Get username from local storage
   const username = localStorage.getItem('username');
@@ -113,7 +115,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
-        {/* <Avatar size="small" className={styles.avatar} src={data.user.profpic.url} alt="avatar" /> */}
+        <Avatar size="small" className={styles.avatar} src={data.user.profpic.url} alt="avatar" />
         <span className={`${styles.name} anticon`}>{username}</span>
       </span>
     </HeaderDropdown>
