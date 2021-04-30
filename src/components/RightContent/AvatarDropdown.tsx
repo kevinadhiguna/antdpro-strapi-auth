@@ -95,6 +95,9 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     </Menu>
   );
 
+  // Get user ID from local storage
+  const id = localStorage.getItem('id');
+
   // Get username from local storage
   const username = localStorage.getItem('username');
 
