@@ -26,9 +26,9 @@ export default () => {
           blankTarget: true,
         },
         {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          key: 'Strapi',
+          title: 'Strapi',
+          href: 'https://strapi.io',
           blankTarget: true,
         },
       ]}
