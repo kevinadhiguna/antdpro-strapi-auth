@@ -18,6 +18,7 @@ import styles from './index.less';
 
 // Import GraphQL Login Query
 import { LOGIN } from '@/graphql/query'; // <- Do not forget to import inside brackets {}
+import { useMutation } from '@apollo/client';
 
 const LoginMessage: React.FC<{
   content: string;
@@ -32,7 +33,9 @@ const LoginMessage: React.FC<{
   />
 );
 
-/** 此方法会跳转到 redirect 参数所在的位置 */
+/** 
+ * This method will jump to the location of the redirect parameter 
+*/
 const goto = () => {
   if (!history) return;
   setTimeout(() => {
@@ -48,6 +51,8 @@ const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
   const { initialState, setInitialState } = useModel('@@initialState');
 
+  const [loginUser] = useMutation(LOGIN);
+  
   const intl = useIntl();
 
   const fetchUserInfo = async () => {
