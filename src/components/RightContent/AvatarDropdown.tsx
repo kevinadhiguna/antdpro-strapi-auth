@@ -7,6 +7,9 @@ import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 import { outLogin } from '@/services/ant-design-pro/api';
 
+import { ME } from '@/graphql/query';
+import { useQuery } from '@apollo/client';
+
 export type GlobalHeaderRightProps = {
   menu?: boolean;
 };
@@ -98,13 +101,19 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   // Get user ID from local storage
   const id = localStorage.getItem('id');
 
+  const { loading, error, data } = useQuery(ME, {
+    variables: {
+      id
+    }
+  });
+
   // Get username from local storage
   const username = localStorage.getItem('username');
 
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
-        {/* <Avatar size="small" className={styles.avatar} src={currentUser.avatar} alt="avatar" /> */}
+        {/* <Avatar size="small" className={styles.avatar} src={data.user.profpic.url} alt="avatar" /> */}
         <span className={`${styles.name} anticon`}>{username}</span>
       </span>
     </HeaderDropdown>
