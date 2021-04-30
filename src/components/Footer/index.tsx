@@ -11,7 +11,7 @@ export default () => {
 
   return (
     <DefaultFooter
-      copyright={`2020 ${defaultMessage}`}
+      copyright={`2021 ${defaultMessage}`}
       links={[
         {
           key: 'Ant Design Pro',
