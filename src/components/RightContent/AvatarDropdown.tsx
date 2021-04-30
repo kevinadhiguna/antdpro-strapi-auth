@@ -108,6 +108,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   });
 
   if (loading) return loadingSpin;
+  if (error) console.error('An Apollo client network occured :', error);
 
   // Get username from local storage
   const username = localStorage.getItem('username');
