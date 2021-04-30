@@ -137,7 +137,7 @@ const Login: React.FC = () => {
             </Link>
           </div>
           <div className={styles.desc}>
-            {intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+            {intl.formatMessage({ id: 'pages.layouts.userLayout.title', defaultMessage: 'Ant Design Pro secured with Strapi GraphQL API 🔒' })}
           </div>
         </div>
 
