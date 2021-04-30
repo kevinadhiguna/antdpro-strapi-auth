@@ -169,21 +169,31 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
                 text: 'Please login again',
               });
 
-              localStorage.removeItem('jwt');
+              localStorage.clear();
               history.push(loginPath);
             }
           } else {
-            console.info('You have not logged in, please login first !');
+            console.log('JWT seems to be invalid, please Login again!');
 
-            // Give an alert to user to login first
             Swal.fire({
               icon: 'error',
-              title: 'Something went wrong...',
+              title: 'Something went wrong',
               text: 'Please login!',
             });
 
+            localStorage.clear();
             history.push(loginPath);
           }
+        } else {
+          console.log('You have not logged in, Login first!');
+
+          Swal.fire({
+            icon: 'warning',
+            title: 'Oops..',
+            text: 'Please login first!',
+          });
+
+          history.push(loginPath);
         }
       }
     },
