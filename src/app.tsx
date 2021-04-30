@@ -11,10 +11,11 @@ import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
 import appConfig from './appConfig.json';
-import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { createUploadLink } from 'apollo-upload-client';
 import jwt_decode, { JwtPayload } from 'jwt-decode';
+import { createUploadLink } from 'apollo-upload-client';
+import { setContext } from '@apollo/client/link/context';
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
+import Swal from 'sweetalert2';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -161,11 +162,25 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
             } else {
               console.error('Your token has expired, please login again');
 
+              // Give an alert to user to login again
+              Swal.fire({
+                icon: 'info',
+                title: 'You have been inactive for a while...',
+                text: 'Please login again',
+              });
+
               localStorage.removeItem('jwt');
               history.push(loginPath);
             }
           } else {
             console.info('You have not logged in, please login first !');
+
+            // Give an alert to user to login first
+            Swal.fire({
+              icon: 'error',
+              title: 'Something went wrong...',
+              text: 'Please login!',
+            });
 
             history.push(loginPath);
           }
