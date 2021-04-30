@@ -12,7 +12,7 @@ export type GlobalHeaderRightProps = {
 };
 
 /**
- * 退出登录，并且将当前的 url 保存
+ * Log out and save the current url
  */
 const loginOut = async () => {
   await outLogin();
@@ -77,20 +77,20 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       {menu && (
         <Menu.Item key="center">
           <UserOutlined />
-          个人中心
+          Personal Center
         </Menu.Item>
       )}
       {menu && (
         <Menu.Item key="settings">
           <SettingOutlined />
-          个人设置
+          Settings
         </Menu.Item>
       )}
       {menu && <Menu.Divider />}
 
       <Menu.Item key="logout">
         <LogoutOutlined />
-        退出登录
+        Log out
       </Menu.Item>
     </Menu>
   );
