@@ -94,6 +94,10 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       </Menu.Item>
     </Menu>
   );
+
+  // Get username from local storage
+  const username = localStorage.getItem('username');
+
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
