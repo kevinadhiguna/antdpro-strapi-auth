@@ -137,6 +137,11 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
 
       if (location.pathname === loginPath) {
         console.info('You are on Login screen');
+
+        if (jwt != null) {
+          // Redirect logged in users to '/' if they visit Login screen.
+          history.push('/');
+        }
       } else {
         if (jwt != null) {
           let decoded: JwtPayload;
