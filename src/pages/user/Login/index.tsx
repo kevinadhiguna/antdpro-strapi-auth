@@ -17,7 +17,7 @@ import { getFakeCaptcha } from '@/services/ant-design-pro/login';
 import styles from './index.less';
 
 // Import GraphQL Login Query
-import { LOGIN } from '@/graphql/query'; // <- Do not forget to import inside brackets {}
+import { LOGIN } from '@/graphql/mutation'; // <- Do not forget to import inside brackets {}
 import { useMutation } from '@apollo/client';
 
 const LoginMessage: React.FC<{
