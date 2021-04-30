@@ -14,6 +14,7 @@ import appConfig from './appConfig.json';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
+import jwt_decode, { JwtPayload } from 'jwt-decode';
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -129,6 +130,46 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       // If you are not logged in, redirect to login screen
       if (!initialState?.currentUser && location.pathname !== loginPath) {
         history.push(loginPath);
+      }
+
+      const jwt = localStorage.getItem('jwt');
+
+      if (location.pathname === loginPath) {
+        console.info('You are on Login screen');
+      } else {
+        if (jwt != null) {
+          let decoded: JwtPayload;
+
+          // Handle a token which is created intentionally (Invalid JWT)
+          try {
+            // Decode JWT
+            decoded = jwt_decode<JwtPayload>(jwt);
+          } catch (error) {
+            console.error('Invalid token, please login');
+            localStorage.removeItem('jwt');
+            history.push(loginPath);
+            return;
+          }
+
+          if (decoded!.exp != undefined) {
+            // Get Current UTC Time
+            const utcTime = Math.floor(Date.now() / 1000);
+
+            if (utcTime < decoded!.exp) {
+              // If token is not expired, stay in the current screen
+              console.info('You are logged in');
+            } else {
+              console.error('Your token has expired, please login again');
+
+              localStorage.removeItem('jwt');
+              history.push(loginPath);
+            }
+          } else {
+            console.info('You have not logged in, please login first !');
+
+            history.push(loginPath);
+          }
+        }
       }
     },
     links: isDev
