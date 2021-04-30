@@ -108,7 +108,10 @@ const Login: React.FC = () => {
         localStorage.setItem('role-name', data.login.user.role.name);
         localStorage.setItem('role-description', data.login.user.role.description);
         localStorage.setItem('role-type', data.login.user.role.type);
+        console.info("Data has been saved in localstorage !");
+        console.info("You are on :", location.pathname);
         history.push('/');
+        console.info("After push, you are on :", location.pathname);
         return;
       } else {
         console.error('An Apollo client error happened :', errors);
