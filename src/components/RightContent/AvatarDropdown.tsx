@@ -103,12 +103,14 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   let { loading, error, data } = useQuery(ME, {
     variables: {
-      id
-    }
+      id,
+    },
   });
 
   if (loading) return loadingSpin;
   if (error) console.error('An Apollo client network occured :', error);
+
+  console.info("Get data from Strapi :", data);
 
   // Get username from local storage
   const username = localStorage.getItem('username');

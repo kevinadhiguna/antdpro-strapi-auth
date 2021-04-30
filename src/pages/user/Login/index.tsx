@@ -33,9 +33,9 @@ const LoginMessage: React.FC<{
   />
 );
 
-/** 
- * This method will jump to the location of the redirect parameter 
-*/
+/**
+ * This method will jump to the location of the redirect parameter
+ */
 const goto = () => {
   if (!history) return;
   setTimeout(() => {
@@ -92,11 +92,11 @@ const Login: React.FC = () => {
           input: {
             identifier: values.username,
             password: values.password,
-          }
-        }
+          },
+        },
       });
 
-      // Store data to local storage unless an error occurs 
+      // Store data to local storage unless an error occurs
       if (!errors) {
         localStorage.setItem('jwt', data.login.jwt);
         localStorage.setItem('id', data.login.user.id);
@@ -108,10 +108,10 @@ const Login: React.FC = () => {
         localStorage.setItem('role-name', data.login.user.role.name);
         localStorage.setItem('role-description', data.login.user.role.description);
         localStorage.setItem('role-type', data.login.user.role.type);
-        console.info("Data has been saved in localstorage !");
-        console.info("You are on :", location.pathname);
+        console.info('Data has been saved in localstorage !');
+        console.info('You are on :', location.pathname);
         history.push('/');
-        console.info("After push, you are on :", location.pathname);
+        console.info('After push, you are on :', location.pathname);
         return;
       } else {
         console.error('An Apollo client error happened :', errors);
@@ -140,7 +140,10 @@ const Login: React.FC = () => {
             </Link>
           </div>
           <div className={styles.desc}>
-            {intl.formatMessage({ id: 'pages.layouts.userLayout.title', defaultMessage: 'Ant Design Pro secured with Strapi GraphQL API 🔒' })}
+            {intl.formatMessage({
+              id: 'pages.layouts.userLayout.title',
+              defaultMessage: 'Ant Design Pro secured with Strapi GraphQL API 🔒',
+            })}
           </div>
         </div>
 

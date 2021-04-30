@@ -14,7 +14,7 @@ export const ME = gql`
       blocked
       role {
         name
-      }    
+      }
       profpic {
         name
         alternativeText
