@@ -90,7 +90,7 @@ const Login: React.FC = () => {
       let { data, errors } = await loginUser({
         variables: {
           input: {
-            identifiers: values.identifier,
+            identifiers: values.username,
             password: values.password,
           }
         }
@@ -194,8 +194,7 @@ const Login: React.FC = () => {
             {type === 'account' && (
               <>
                 <ProFormText
-                  // name="username"
-                  name="identifier"
+                  name="username"
                   fieldProps={{
                     size: 'large',
                     prefix: <UserOutlined className={styles.prefixIcon} />,
