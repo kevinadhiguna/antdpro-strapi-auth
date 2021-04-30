@@ -90,7 +90,7 @@ const Login: React.FC = () => {
       let { data, errors } = await loginUser({
         variables: {
           input: {
-            identifiers: values.username,
+            identifier: values.username,
             password: values.password,
           }
         }
