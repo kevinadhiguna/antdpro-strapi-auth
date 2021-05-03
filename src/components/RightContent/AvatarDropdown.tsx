@@ -71,10 +71,6 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
 
   const { currentUser } = initialState;
 
-  if (!currentUser || !currentUser.name) {
-    return loadingSpin;
-  }
-
   const menuHeaderDropdown = (
     <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
       {menu && (
@@ -101,24 +97,36 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   // Get user ID from local storage
   const id = localStorage.getItem('id');
 
-  let { loading, error, data } = useQuery(ME, {
+  let { loading: MeQueryLoading, error: MeQueryError, data: MeQueryData } = useQuery(ME, {
     variables: {
       id,
     },
   });
 
-  if (loading) return loadingSpin;
-  if (error) console.error('An Apollo client network occured :', error);
+  if (MeQueryLoading) return loadingSpin;
+  if (MeQueryError) console.error('An Apollo client network occured :', MeQueryError);
 
-  console.info('Get data from Strapi :', data);
+  console.info('Get data from Strapi :', MeQueryData);
 
   // Get username from local storage
   const username = localStorage.getItem('username');
 
+  console.log('user id di Avatar Dropdown : ', id);
+
+  // == No longer used, please use the logic below to return username and profile picture of user ==
+  // if (!currentUser || !currentUser.name) {
+  //   return loadingSpin;
+  // }
+
+  // == Return loadingSpin component only if either username or Profile Picture URL is false ==
+  if (!username || !MeQueryData.user.profpic.url) {
+    return loadingSpin;
+  }
+
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
-        <Avatar size="small" className={styles.avatar} src={data.user.profpic.url} alt="avatar" />
+        <Avatar size="small" className={styles.avatar} src={MeQueryData.user.profpic.url} alt="avatar" />
         <span className={`${styles.name} anticon`}>{username}</span>
       </span>
     </HeaderDropdown>
