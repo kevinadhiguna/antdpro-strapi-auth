@@ -1,7 +1,12 @@
 # Ant Design Pro - Strapi GraphQL Auth
 
-Currently under the development 🚧 
-<br/><br/>
+<img src="https://s3.gifyu.com/images/mock_macbookpro15_front.png" alt="mock_macbookpro15_front.png" border="0" />
+
+## Demo
+
+<img src="https://s3.gifyu.com/images/antdesignpro-strapi-round.gif" alt="antdesignpro-strapi-round.gif" border="0" />
+
+<br/>
 Here are quick guide for how to use.
 
 ## Environment Prepare
