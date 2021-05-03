@@ -49,7 +49,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       if (key === 'logout' && initialState) {
         setInitialState({ ...initialState, currentUser: undefined });
         loginOut();
-        localStorage.clear() // <- logout functionality : remove all items in local storage including JWT
+        localStorage.clear(); // <- logout functionality : remove all items in local storage including JWT
         return;
       }
       history.push(`/account/${key}`);
@@ -127,7 +127,12 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   return (
     <HeaderDropdown overlay={menuHeaderDropdown}>
       <span className={`${styles.action} ${styles.account}`}>
-        <Avatar size="small" className={styles.avatar} src={MeQueryData.user.profpic.url} alt="avatar" />
+        <Avatar
+          size="small"
+          className={styles.avatar}
+          src={MeQueryData.user.profpic.url}
+          alt="avatar"
+        />
         <span className={`${styles.name} anticon`}>{username}</span>
       </span>
     </HeaderDropdown>
