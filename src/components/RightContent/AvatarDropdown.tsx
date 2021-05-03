@@ -7,7 +7,10 @@ import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 import { outLogin } from '@/services/ant-design-pro/api';
 
-import { ME } from '@/graphql/query';
+// Import GraphQL ME Query
+import { ME } from '@/graphql/query'; // <- Do not forget to import inside brackets {}
+
+// Import useQuery hook from Apollo Client
 import { useQuery } from '@apollo/client';
 
 export type GlobalHeaderRightProps = {
@@ -54,6 +57,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
     [initialState, setInitialState],
   );
 
+  // Rename 'loading' to 'loadingSpin' to avoid confusion with useQuery hook's 'loading' property
   const loadingSpin = (
     <span className={`${styles.action} ${styles.account}`}>
       <Spin
@@ -107,12 +111,8 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   if (MeQueryLoading) return loadingSpin;
   if (MeQueryError) console.error('An Apollo client network occured :', MeQueryError);
 
-  console.info('Get data from Strapi :', MeQueryData);
-
   // Get username from local storage
   const username = localStorage.getItem('username');
-
-  console.log('user id di Avatar Dropdown : ', id);
 
   // == No longer used, please use the logic below to return username and profile picture of user ==
   // if (!currentUser || !currentUser.name) {
