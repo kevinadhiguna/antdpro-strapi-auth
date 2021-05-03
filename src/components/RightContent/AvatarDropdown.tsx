@@ -46,6 +46,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
       if (key === 'logout' && initialState) {
         setInitialState({ ...initialState, currentUser: undefined });
         loginOut();
+        localStorage.clear() // <- logout functionality : remove all items in local storage including JWT
         return;
       }
       history.push(`/account/${key}`);
