@@ -14,7 +14,9 @@ Implementation of authentication in Ant Design Pro v5 with Strapi API powered by
 
 ## Demo
 
-<img src="https://s3.gifyu.com/images/antdesignpro-strapi-round.gif" alt="antdesignpro-strapi-round.gif" border="0" />
+<div align="center">
+  <img src="https://s3.gifyu.com/images/antdesignpro-strapi-round.gif" alt="antdesignpro-strapi-round.gif" border="0" />
+</div>
 
 <br/>
 Here is a quick guide for how to use :
