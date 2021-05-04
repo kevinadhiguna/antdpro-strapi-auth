@@ -6,7 +6,7 @@ export default {
   'pages.login.success': 'Login successful!',
   'pages.login.username.placeholder': 'Username or Email address',
   'pages.login.username.required': 'Please put your username or email address...',
-  'pages.login.password.placeholder': 'Password: ant.design',
+  'pages.login.password.placeholder': 'Password',
   'pages.login.password.required': 'Please input your password!',
   'pages.login.phoneLogin.tab': 'Phone Login',
   'pages.login.phoneLogin.errorMessage': 'Verification Code Error',
