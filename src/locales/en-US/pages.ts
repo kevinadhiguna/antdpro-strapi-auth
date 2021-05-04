@@ -7,7 +7,7 @@ export default {
   'pages.login.username.placeholder': 'Username or Email address',
   'pages.login.username.required': 'Please put your username or email address...',
   'pages.login.password.placeholder': 'Password',
-  'pages.login.password.required': 'Please input your password!',
+  'pages.login.password.required': 'Oops, you missed your password...',
   'pages.login.phoneLogin.tab': 'Phone Login',
   'pages.login.phoneLogin.errorMessage': 'Verification Code Error',
   'pages.login.phoneNumber.placeholder': 'Phone Number',
