@@ -1,4 +1,5 @@
-import { Table, Skeleton, Result } from 'antd';
+import { Table, Result } from 'antd';
+import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
 import { useQuery } from '@apollo/client';
@@ -7,7 +8,7 @@ const PlayerList = () => {
   let { loading, error, data } = useQuery(JUVENTUS);
 
   if (loading) {
-    return <Skeleton active />;
+    return <Skeleton type="list" />;
   }
 
   if (error) {
