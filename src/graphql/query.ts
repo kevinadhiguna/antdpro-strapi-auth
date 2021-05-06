@@ -25,3 +25,20 @@ export const ME = gql`
     }
   }
 `;
+
+// JUVENTUS query to get all data in Juventus collection-type
+export const JUVENTUS = gql`
+  query getJuventusPlayers {
+    juventuses {
+      id
+      name
+      number
+      age
+      country
+      appearences
+      goals
+      minutesPlayed
+      position
+    }
+  }
+`;
