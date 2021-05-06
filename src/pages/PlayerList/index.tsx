@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table, Skeleton } from 'antd';
 
 import { JUVENTUS } from '@/graphql/query';
 import { useQuery } from '@apollo/client';
@@ -6,7 +6,12 @@ import { useQuery } from '@apollo/client';
 const PlayerList = () => {
   let { loading, error, data } = useQuery(JUVENTUS);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return(
+      <Skeleton active />
+    );
+  }
+
   if (error) return <p>Error !</p>;
 
   console.info('Juventus Players :', data);
