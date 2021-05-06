@@ -1,6 +1,25 @@
 import { gql } from '@apollo/client';
 
-// USER Query to get current user info
+// USERS query to get all users
+export const USERS = gql`
+  query getUsers {
+    users {
+      id
+      username
+      email
+      confirmed
+      blocked
+      role {
+        name
+      }
+      profpic {
+        url
+      }
+    }
+  }
+`;
+
+// USER query to get current user info
 export const USER = gql`
   query User($id: ID!) {
     user(id: $id) {
