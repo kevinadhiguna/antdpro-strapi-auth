@@ -1,4 +1,4 @@
-import { Table, Skeleton } from 'antd';
+import { Table, Skeleton, Result } from 'antd';
 
 import { JUVENTUS } from '@/graphql/query';
 import { useQuery } from '@apollo/client';
@@ -7,18 +7,24 @@ const PlayerList = () => {
   let { loading, error, data } = useQuery(JUVENTUS);
 
   if (loading) {
-    return(
-      <Skeleton active />
-    );
+    return <Skeleton active />;
   }
 
-  if (error) return <p>Error !</p>;
+  if (error) {
+    return (
+      <Result
+        status="error"
+        title="Something went wrong..."
+        subTitle="Please check your network or try again later"
+      />
+    );
+  }
 
   console.info('Juventus Players :', data);
 
   let size = Object.keys(data.juventuses).length;
-  console.log("Length of Data :", size);
-  
+  console.log('Length of Data :', size);
+
   let dataArray: any[] = [];
 
   for (let index = 0; index < size; index++) {
@@ -32,10 +38,10 @@ const PlayerList = () => {
       goals: data.juventuses[index].goals,
       minutesPlayed: data.juventuses[index].minutesPlayed,
       position: data.juventuses[index].position,
-    })
+    });
   }
 
-  console.info("Data Array : ", dataArray);
+  console.info('Data Array : ', dataArray);
 
   const columns = [
     {
@@ -80,9 +86,7 @@ const PlayerList = () => {
     },
   ];
 
-  return (
-    <Table dataSource={dataArray} columns={columns} />
-  );
+  return <Table dataSource={dataArray} columns={columns} />;
 };
 
 export default PlayerList;
