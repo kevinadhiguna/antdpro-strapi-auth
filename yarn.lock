@@ -139,7 +139,7 @@
   dependencies:
     rc-util "^5.0.1"
 
-"@ant-design/pro-skeleton@1.0.1":
+"@ant-design/pro-skeleton@1.0.1", "@ant-design/pro-skeleton@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@ant-design/pro-skeleton/-/pro-skeleton-1.0.1.tgz#419a0f88c5d544043ae0035eb3aa35494813e959"
   integrity sha512-vzdqJoVq0fqNEqak9uZfkA1idPgxX2h5LY2AvN3rWHYM7qtP3MSYEgJ+gmvwXSFytH32nOHrhHeV+vUN7RlG9g==
