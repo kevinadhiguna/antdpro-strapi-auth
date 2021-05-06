@@ -7,8 +7,8 @@ import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 import { outLogin } from '@/services/ant-design-pro/api';
 
-// Import GraphQL ME Query
-import { ME } from '@/graphql/query'; // <- Do not forget to import inside brackets {}
+// Import GraphQL USER Query
+import { USER } from '@/graphql/query'; // <- Do not forget to import inside brackets {}
 
 // Import useQuery hook from Apollo Client
 import { useQuery } from '@apollo/client';
@@ -102,14 +102,14 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   // Get user ID from local storage
   const id = localStorage.getItem('id');
 
-  let { loading: MeQueryLoading, error: MeQueryError, data: MeQueryData } = useQuery(ME, {
+  let { loading: UserQueryLoading, error: UserQueryError, data: UserQueryData } = useQuery(USER, {
     variables: {
       id,
     },
   });
 
-  if (MeQueryLoading) return loadingSpin;
-  if (MeQueryError) console.error('An Apollo client network occured :', MeQueryError);
+  if (UserQueryLoading) return loadingSpin;
+  if (UserQueryError) console.error('An Apollo client network occured :', UserQueryError);
 
   // Get username from local storage
   const username = localStorage.getItem('username');
@@ -120,7 +120,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
   // }
 
   // == Return loadingSpin component only if either username or Profile Picture URL is false ==
-  if (!username || !MeQueryData.user.profpic.url) {
+  if (!username || !UserQueryData.user.profpic.url) {
     return loadingSpin;
   }
 
@@ -130,7 +130,7 @@ const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu }) => {
         <Avatar
           size="small"
           className={styles.avatar}
-          src={MeQueryData.user.profpic.url}
+          src={UserQueryData.user.profpic.url}
           alt="avatar"
         />
         <span className={`${styles.name} anticon`}>{username}</span>
