@@ -43,6 +43,12 @@
     component: './TableList',
   },
   {
+    name: 'Players',
+    icon: 'team',
+    path: '/players',
+    component: './PlayerList',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
