@@ -58,6 +58,9 @@ export const JUVENTUS = gql`
       goals
       minutesPlayed
       position
+      profpic {
+        url
+      }
     }
   }
 `;
