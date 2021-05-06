@@ -1,8 +1,21 @@
-import { Table, Result } from 'antd';
+import { Table, Result, Avatar } from 'antd';
 import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
 import { useQuery } from '@apollo/client';
+
+export type TableListItem = {
+  key: number;
+  name: string;
+  avatar: string;
+  number: number;
+  age: number;
+  country: string;
+  appearences: number;
+  goals: number;
+  minutesPlayed: number;
+  position: string;
+};
 
 const PlayerList = () => {
   let { loading, error, data } = useQuery(JUVENTUS);
@@ -21,17 +34,15 @@ const PlayerList = () => {
     );
   }
 
-  console.info('Juventus Players :', data);
-
   let size = Object.keys(data.juventuses).length;
-  console.log('Length of Data :', size);
 
-  let dataArray: any[] = [];
+  let dataArray: TableListItem[] = [];
 
   for (let index = 0; index < size; index++) {
     dataArray.push({
       key: index,
       name: data.juventuses[index].name,
+      avatar: data.juventuses[index].profpic.url,
       number: data.juventuses[index].number,
       age: data.juventuses[index].age,
       country: data.juventuses[index].country,
@@ -49,6 +60,16 @@ const PlayerList = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+    },
+    {
+      title: 'Avatar',
+      dataIndex: 'avatar',
+      width: 150,
+      render: (record: any) => {
+        return(
+          <Avatar size="small" shape="circle" src={record.avatar} />
+        )
+      }
     },
     {
       title: 'Number',
