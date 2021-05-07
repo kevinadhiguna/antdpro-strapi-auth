@@ -62,7 +62,6 @@ const PlayerList = () => {
     {
       title: 'Avatar',
       dataIndex: 'avatar',
-      width: 150,
       render: (record: any) => (
         // Log 'record' to console to see what is inside for debugging purpose
         <Avatar size="small" shape="circle" src={record} alt="juventus player" />
