@@ -63,7 +63,7 @@ const PlayerList = () => {
       title: 'Avatar',
       dataIndex: 'avatar',
       width: 150,
-      render: (record: any) => <Avatar size="small" shape="circle" src={record} /> // <- Log record to console to see what is inside for debugging purpose.
+      render: (record: any) => <Avatar size="small" shape="circle" src={record} />, // <- Log record to console to see what is inside for debugging purpose.
     },
     {
       title: 'Number',
