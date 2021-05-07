@@ -53,8 +53,6 @@ const PlayerList = () => {
     });
   }
 
-  console.info('Data Array : ', dataArray);
-
   const columns = [
     {
       title: 'Name',
@@ -65,11 +63,7 @@ const PlayerList = () => {
       title: 'Avatar',
       dataIndex: 'avatar',
       width: 150,
-      render: (record: any) => {
-        return(
-          <Avatar size="small" shape="circle" src={record.avatar} />
-        )
-      }
+      render: (record: any) => <Avatar size="small" shape="circle" src={record} /> // <- Log record to console to see what is inside for debugging purpose.
     },
     {
       title: 'Number',
