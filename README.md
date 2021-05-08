@@ -8,7 +8,7 @@ Implementation of authentication in Ant Design Pro v5 with Strapi API powered by
 
 <img src="https://img.shields.io/badge/Ant_Design_Pro-0170FE?style=for-the-badge&logo=ant-design&logoColor=white" /> <img alt="Ant-Design" src="https://img.shields.io/badge/-Ant_Design-%230170FE?&style=for-the-badge&logo=ant-design&logoColor=white"/> <img src="https://img.shields.io/badge/strapi-2e7eea?style=for-the-badge&logo=strapi&logoColor=white" /> <img src="https://img.shields.io/badge/GraphQl-E10098?style=for-the-badge&logo=graphql&logoColor=white" /> <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> <img alt="Apollo-GraphQL" src="https://img.shields.io/badge/-ApolloGraphQL-311C87?style=for-the-badge&logo=apollo-graphql"/>
 
-<img src="https://s3.gifyu.com/images/demo-mock.png" alt="Ant Design Pro - Strapi auth" border="0" />
+<img src="https://s3.gifyu.com/images/ecf1535jw45n673m255.png" alt="Ant Design Pro - Strapi auth" border="0" />
 
 </div>
 
