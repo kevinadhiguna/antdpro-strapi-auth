@@ -64,4 +64,9 @@ yarn lint:fix
 ```bash
 yarn test
 ```
+
+# Looking for Ant Design Pro with URQL GraphQL client ?
+
+Here is the repo you might be looking for : [https://github.com/kevinadhiguna/antdpro-strapi-urql](https://github.com/kevinadhiguna/antdpro-strapi-urql)
+
 [![Visits Badge](https://badges.pufler.dev/visits/kevinadhiguna/antdpro-strapi-auth)](https://github.com/kevinadhiguna)
