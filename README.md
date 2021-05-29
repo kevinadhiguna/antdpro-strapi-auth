@@ -69,4 +69,8 @@ yarn test
 
 Here is the repo you might be looking for : [https://github.com/kevinadhiguna/antdpro-strapi-urql](https://github.com/kevinadhiguna/antdpro-strapi-urql)
 
+## 🔎 Looking for the Server-side ?
+
+Here is the Strapi app that you can use with this project : [https://github.com/kevinadhiguna/strapi-dockerize](https://github.com/kevinadhiguna/strapi-dockerize)
+
 [![Visits Badge](https://badges.pufler.dev/visits/kevinadhiguna/antdpro-strapi-auth)](https://github.com/kevinadhiguna)
