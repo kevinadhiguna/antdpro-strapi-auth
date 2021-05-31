@@ -46,7 +46,7 @@
     name: 'player.list',
     icon: 'team',
     path: '/players',
-    component: './PlayerList',
+    component: './Players',
   },
   {
     path: '/',
