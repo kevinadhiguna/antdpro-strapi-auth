@@ -29,7 +29,7 @@ export default {
   'menu.list.search-list.articles': 'Search List(articles)',
   'menu.list.search-list.projects': 'Search List(projects)',
   'menu.list.search-list.applications': 'Search List(applications)',
-  'menu.player.list': 'Players',
+  'menu.players': 'Players',
   'menu.editable.players': 'Edit Players',
   'menu.profile': 'Profile',
   'menu.profile.basic': 'Basic Profile',

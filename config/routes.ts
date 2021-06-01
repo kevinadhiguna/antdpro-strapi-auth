@@ -43,7 +43,7 @@
     component: './TableList',
   },
   {
-    name: 'player.list',
+    name: 'players',
     icon: 'team',
     path: '/players',
     component: './Players',
