@@ -207,6 +207,29 @@ export default () => {
       dataIndex: 'position',
       key: 'position',
     },
+		{
+      title: 'Operation',
+      valueType: 'option',
+      width: 200,
+      render: (text, record, _, action) => [
+        <a
+          key="editable"
+          onClick={() => {
+            action?.startEditable?.(record.key);
+          }}
+        >
+          Edit
+        </a>,
+        <a
+          key="delete"
+          onClick={() => {
+            setDataSource(dataSource.filter((item) => item.key !== record.key));
+          }}
+        >
+          Delete
+        </a>,
+      ],
+    },
   ];
 
   return (
