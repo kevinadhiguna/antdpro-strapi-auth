@@ -6,15 +6,15 @@ import { useQuery } from '@apollo/client';
 
 export type TableListItem = {
   key: number;
-  name: string;
-  avatar: string;
-  number: number;
-  age: number;
-  country: string;
-  appearences: number;
-  goals: number;
-  minutesPlayed: number;
-  position: string;
+  name?: string;
+  avatar?: string;
+  number?: number;
+  age?: number;
+  country?: string;
+  appearences?: number;
+  goals?: number;
+  minutesPlayed?: number;
+  position?: string;
 };
 
 const PlayerList = () => {
