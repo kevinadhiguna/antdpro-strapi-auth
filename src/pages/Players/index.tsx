@@ -38,18 +38,18 @@ const PlayerList = () => {
 
   let dataArray: TableListItem[] = [];
 
-  for (let index = 0; index < size; index++) {
+  for (let i = 0; i < size; i++) {
     dataArray.push({
-      key: index,
-      name: data.juventuses[index].name,
-      avatar: data.juventuses[index].profpic.url,
-      number: data.juventuses[index].number,
-      age: data.juventuses[index].age,
-      country: data.juventuses[index].country,
-      appearences: data.juventuses[index].appearences,
-      goals: data.juventuses[index].goals,
-      minutesPlayed: data.juventuses[index].minutesPlayed,
-      position: data.juventuses[index].position,
+      key: i,
+      name: data.juventuses[i].name,
+      avatar: data.juventuses[i].profpic.url,
+      number: data.juventuses[i].number,
+      age: data.juventuses[i].age,
+      country: data.juventuses[i].country,
+      appearences: data.juventuses[i].appearences,
+      goals: data.juventuses[i].goals,
+      minutesPlayed: data.juventuses[i].minutesPlayed,
+      position: data.juventuses[i].position,
     });
   }
 
