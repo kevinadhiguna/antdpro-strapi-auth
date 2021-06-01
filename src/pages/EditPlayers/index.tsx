@@ -5,6 +5,12 @@ import ProField from '@ant-design/pro-field';
 import { ProFormRadio } from '@ant-design/pro-form';
 import ProCard from '@ant-design/pro-card';
 
+import { Result } from 'antd';
+import Skeleton from '@ant-design/pro-skeleton';
+
+import { JUVENTUS } from '@/graphql/query';
+import { useQuery } from '@apollo/client';
+
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -14,35 +20,59 @@ const waitTime = (time: number = 100) => {
 };
 
 type DataSourceType = {
-  id: React.Key;
-  title?: string;
-  decs?: string;
-  state?: string;
-  created_at?: string;
-  children?: DataSourceType[];
+  key: number;
+  name?: string;
+  avatar?: string;
+  number?: number;
+  age?: number;
+  country?: string;
+  appearences?: number;
+  goals?: number;
+  minutesPlayed?: number;
+  position?: string;
 };
-
-const defaultData: DataSourceType[] = [
-  {
-    id: 624748504,
-    title: 'Activity One',
-    decs: 'This event is really fun',
-    state: 'open',
-    created_at: '2020-05-26T09:42:56Z',
-  },
-  {
-    id: 624691229,
-    title: 'Activity Two',
-    decs: 'This event is really amazing',
-    state: 'closed',
-    created_at: '2020-05-26T08:19:22Z',
-  },
-];
 
 export default () => {
   const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([]);
   const [dataSource, setDataSource] = useState<DataSourceType[]>([]);
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
+
+  const defaultData: DataSourceType[] = [];
+
+	let { loading, error, data } = useQuery(JUVENTUS);
+
+  if (loading) {
+    return <Skeleton type="list" />;
+  }
+
+  if (error) {
+    return (
+      <Result
+        status="error"
+        title="Something went wrong..."
+        subTitle="Please check your network or try again later"
+      />
+    );
+  }
+
+  let size = Object.keys(data.juventuses).length;
+
+  let dataArray: DataSourceType[] = [];
+
+  for (let i = 0; i < size; i++) {
+    dataArray.push({
+      key: i,
+      name: data.juventuses[i].name,
+      avatar: data.juventuses[i].profpic.url,
+      number: data.juventuses[i].number,
+      age: data.juventuses[i].age,
+      country: data.juventuses[i].country,
+      appearences: data.juventuses[i].appearences,
+      goals: data.juventuses[i].goals,
+      minutesPlayed: data.juventuses[i].minutesPlayed,
+      position: data.juventuses[i].position,
+    });
+  }
 
   const columns: ProColumns<DataSourceType>[] = [
     {
@@ -106,7 +136,7 @@ export default () => {
         <a
           key="editable"
           onClick={() => {
-            action?.startEditable?.(record.id);
+            action?.startEditable?.(record.key);
           }}
         >
           Edit
@@ -114,7 +144,7 @@ export default () => {
         <a
           key="delete"
           onClick={() => {
-            setDataSource(dataSource.filter((item) => item.id !== record.id));
+            setDataSource(dataSource.filter((item) => item.key !== record.key));
           }}
         >
           Delete
@@ -129,14 +159,14 @@ export default () => {
         rowKey="id"
         headerTitle="Editable Table"
         maxLength={5}
-        recordCreatorProps={
-          position !== 'hidden'
-            ? {
-                position: position as 'top',
-                record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),
-              }
-            : false
-        }
+        // recordCreatorProps={
+        //   position !== 'hidden'
+        //     ? {
+        //         position: position as 'top',
+        //         record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),
+        //       }
+        //     : false
+        // }
         toolBarRender={() => [
           <ProFormRadio.Group
             key="render"
