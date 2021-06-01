@@ -31,6 +31,7 @@ export default {
   'menu.list.search-list.applications': 'Search List(applications)',
   'menu.players': 'Players',
   'menu.editable.players': 'Edit Players',
+  'menu.edit': 'Edit Template',
   'menu.profile': 'Profile',
   'menu.profile.basic': 'Basic Profile',
   'menu.profile.advanced': 'Advanced Profile',
