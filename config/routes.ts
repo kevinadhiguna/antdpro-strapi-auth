@@ -49,6 +49,12 @@
     component: './Players',
   },
   {
+    name: 'editable.players',
+    icon: 'edit',
+    path: '/editPlayers',
+    component: './EditPlayers',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
