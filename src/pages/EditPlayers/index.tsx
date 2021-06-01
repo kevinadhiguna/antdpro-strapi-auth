@@ -25,15 +25,15 @@ type DataSourceType = {
 const defaultData: DataSourceType[] = [
   {
     id: 624748504,
-    title: '活动名称一',
-    decs: '这个活动真好玩',
+    title: 'Activity One',
+    decs: 'This event is really fun',
     state: 'open',
     created_at: '2020-05-26T09:42:56Z',
   },
   {
     id: 624691229,
-    title: '活动名称二',
-    decs: '这个活动真好玩',
+    title: 'Activity Two',
+    decs: 'This event is really amazing',
     state: 'closed',
     created_at: '2020-05-26T08:19:22Z',
   },
@@ -46,38 +46,38 @@ export default () => {
 
   const columns: ProColumns<DataSourceType>[] = [
     {
-      title: '活动名称',
+      title: 'Event Name',
       dataIndex: 'title',
       formItemProps: (form, { rowIndex }) => {
         return {
-          rules: rowIndex > 2 ? [{ required: true, message: '此项为必填项' }] : [],
+          rules: rowIndex > 2 ? [{ required: true, message: 'This is required' }] : [],
         };
       },
-      // 第二行不允许编辑
+      // Editing is not allowed on the second line
       editable: (text, record, index) => {
         return index !== 0;
       },
       width: '30%',
     },
     {
-      title: '状态',
+      title: 'Status',
       key: 'state',
       dataIndex: 'state',
       valueType: 'select',
       valueEnum: {
-        all: { text: '全部', status: 'Default' },
+        all: { text: 'All', status: 'Default' },
         open: {
-          text: '未解决',
+          text: 'Unsolved',
           status: 'Error',
         },
         closed: {
-          text: '已解决',
+          text: 'Solved',
           status: 'Success',
         },
       },
     },
     {
-      title: '描述',
+      title: 'Description',
       dataIndex: 'decs',
       fieldProps: (from, { rowKey, rowIndex }) => {
         if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
@@ -94,12 +94,12 @@ export default () => {
       },
     },
     {
-      title: '活动时间',
+      title: 'Activity Time',
       dataIndex: 'created_at',
       valueType: 'date',
     },
     {
-      title: '操作',
+      title: 'Operation',
       valueType: 'option',
       width: 200,
       render: (text, record, _, action) => [
@@ -109,7 +109,7 @@ export default () => {
             action?.startEditable?.(record.id);
           }}
         >
-          编辑
+          Edit
         </a>,
         <a
           key="delete"
@@ -117,7 +117,7 @@ export default () => {
             setDataSource(dataSource.filter((item) => item.id !== record.id));
           }}
         >
-          删除
+          Delete
         </a>,
       ],
     },
@@ -127,7 +127,7 @@ export default () => {
     <>
       <EditableProTable<DataSourceType>
         rowKey="id"
-        headerTitle="可编辑表格"
+        headerTitle="Editable Table"
         maxLength={5}
         recordCreatorProps={
           position !== 'hidden'
@@ -146,15 +146,15 @@ export default () => {
             }}
             options={[
               {
-                label: '添加到顶部',
+                label: 'Add to the top',
                 value: 'top',
               },
               {
-                label: '添加到底部',
+                label: 'Add to the bottom',
                 value: 'bottom',
               },
               {
-                label: '隐藏',
+                label: 'Hide',
                 value: 'hidden',
               },
             ]}
@@ -177,7 +177,7 @@ export default () => {
           onChange: setEditableRowKeys,
         }}
       />
-      <ProCard title="表格数据" headerBordered collapsible defaultCollapsed>
+      <ProCard title="Tabular Data" headerBordered collapsible defaultCollapsed>
         <ProField
           fieldProps={{
             style: {
