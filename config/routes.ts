@@ -55,6 +55,12 @@
     component: './EditPlayers',
   },
   {
+    name: 'edit',
+    icon: 'edit',
+    path: '/edit',
+    component: './Edit',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
