@@ -5,7 +5,7 @@ import ProField from '@ant-design/pro-field';
 import { ProFormRadio } from '@ant-design/pro-form';
 import ProCard from '@ant-design/pro-card';
 
-import { Result } from 'antd';
+import { Result, Avatar } from 'antd';
 import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
@@ -74,82 +74,138 @@ export default () => {
     });
   }
 
-  const columns: ProColumns<DataSourceType>[] = [
+  // const columns: ProColumns<DataSourceType>[] = [
+  //   {
+  //     title: 'Event Name',
+  //     dataIndex: 'title',
+  //     formItemProps: (form, { rowIndex }) => {
+  //       return {
+  //         rules: rowIndex > 2 ? [{ required: true, message: 'This is required' }] : [],
+  //       };
+  //     },
+  //     // Editing is not allowed on the second line
+  //     editable: (text, record, index) => {
+  //       return index !== 0;
+  //     },
+  //     width: '30%',
+  //   },
+  //   {
+  //     title: 'Status',
+  //     key: 'state',
+  //     dataIndex: 'state',
+  //     valueType: 'select',
+  //     valueEnum: {
+  //       all: { text: 'All', status: 'Default' },
+  //       open: {
+  //         text: 'Unsolved',
+  //         status: 'Error',
+  //       },
+  //       closed: {
+  //         text: 'Solved',
+  //         status: 'Success',
+  //       },
+  //     },
+  //   },
+  //   {
+  //     title: 'Description',
+  //     dataIndex: 'decs',
+  //     fieldProps: (from, { rowKey, rowIndex }) => {
+  //       if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
+  //         return {
+  //           disabled: true,
+  //         };
+  //       }
+  //       if (rowIndex > 9) {
+  //         return {
+  //           disabled: true,
+  //         };
+  //       }
+  //       return {};
+  //     },
+  //   },
+  //   {
+  //     title: 'Activity Time',
+  //     dataIndex: 'created_at',
+  //     valueType: 'date',
+  //   },
+  //   {
+  //     title: 'Operation',
+  //     valueType: 'option',
+  //     width: 200,
+  //     render: (text, record, _, action) => [
+  //       <a
+  //         key="editable"
+  //         onClick={() => {
+  //           action?.startEditable?.(record.key);
+  //         }}
+  //       >
+  //         Edit
+  //       </a>,
+  //       <a
+  //         key="delete"
+  //         onClick={() => {
+  //           setDataSource(dataSource.filter((item) => item.key !== record.key));
+  //         }}
+  //       >
+  //         Delete
+  //       </a>,
+  //     ],
+  //   },
+  // ];
+
+	const columns: ProColumns<DataSourceType>[] = [
     {
-      title: 'Event Name',
-      dataIndex: 'title',
-      formItemProps: (form, { rowIndex }) => {
-        return {
-          rules: rowIndex > 2 ? [{ required: true, message: 'This is required' }] : [],
-        };
-      },
-      // Editing is not allowed on the second line
-      editable: (text, record, index) => {
-        return index !== 0;
-      },
-      width: '30%',
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
     },
     {
-      title: 'Status',
-      key: 'state',
-      dataIndex: 'state',
-      valueType: 'select',
-      valueEnum: {
-        all: { text: 'All', status: 'Default' },
-        open: {
-          text: 'Unsolved',
-          status: 'Error',
-        },
-        closed: {
-          text: 'Solved',
-          status: 'Success',
-        },
-      },
+      title: 'Avatar',
+      dataIndex: 'avatar',
+      render: (record: any) => (
+        // Log 'record' to console to see what is inside for debugging purpose
+        <Avatar
+          size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} // <- Adjust avatars' responsiveness
+          shape="circle"
+          src={record}
+          alt="juventus player"
+        />
+      ),
     },
     {
-      title: 'Description',
-      dataIndex: 'decs',
-      fieldProps: (from, { rowKey, rowIndex }) => {
-        if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
-          return {
-            disabled: true,
-          };
-        }
-        if (rowIndex > 9) {
-          return {
-            disabled: true,
-          };
-        }
-        return {};
-      },
+      title: 'Number',
+      dataIndex: 'number',
+      key: 'number',
     },
     {
-      title: 'Activity Time',
-      dataIndex: 'created_at',
-      valueType: 'date',
+      title: 'Age',
+      dataIndex: 'age',
+      key: 'age',
     },
     {
-      title: 'Operation',
-      valueType: 'option',
-      width: 200,
-      render: (text, record, _, action) => [
-        <a
-          key="editable"
-          onClick={() => {
-            action?.startEditable?.(record.key);
-          }}
-        >
-          Edit
-        </a>,
-        <a
-          key="delete"
-          onClick={() => {
-            setDataSource(dataSource.filter((item) => item.key !== record.key));
-          }}
-        >
-          Delete
-        </a>,
-      ],
+      title: 'Country',
+      dataIndex: 'country',
+      key: 'country',
+    },
+    {
+      title: 'Appearence(s)',
+      dataIndex: 'appearences',
+      key: 'appearences',
+    },
+    {
+      title: 'Goal(s)',
+      dataIndex: 'goals',
+      key: 'goals',
+    },
+    {
+      title: 'Minutes Played',
+      dataIndex: 'minutesPlayed',
+      key: 'minutesPlayed',
+    },
+    {
+      title: 'Position',
+      dataIndex: 'position',
+      key: 'position',
     },
   ];
 
