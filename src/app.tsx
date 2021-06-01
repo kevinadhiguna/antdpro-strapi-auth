@@ -201,11 +201,11 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
       ? [
           <Link to="/umi/plugin/openapi" target="_blank">
             <LinkOutlined />
-            <span>openAPI documentation</span>
+            <span>openAPI docs</span>
           </Link>,
           <Link to="/~docs">
             <BookOutlined />
-            <span>Business component docs</span>
+            <span>Business comp. docs</span>
           </Link>,
         ]
       : [],
