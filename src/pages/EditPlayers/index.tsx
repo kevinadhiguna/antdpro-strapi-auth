@@ -37,8 +37,6 @@ export default () => {
   const [dataSource, setDataSource] = useState<DataSourceType[]>([]);
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
 
-  const defaultData: DataSourceType[] = [];
-
 	let { loading, error, data } = useQuery(JUVENTUS);
 
   if (loading) {
@@ -57,10 +55,10 @@ export default () => {
 
   let size = Object.keys(data.juventuses).length;
 
-  let dataArray: DataSourceType[] = [];
+  const playerData: DataSourceType[] = [];
 
   for (let i = 0; i < size; i++) {
-    dataArray.push({
+    playerData.push({
       key: i,
       name: data.juventuses[i].name,
       avatar: data.juventuses[i].profpic.url,
@@ -271,7 +269,7 @@ export default () => {
         ]}
         columns={columns}
         request={async () => ({
-          data: defaultData,
+          data: playerData,
           total: 3,
           success: true,
         })}
