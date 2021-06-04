@@ -22,7 +22,26 @@ export const LOGIN = gql`
   }
 `;
 
-// Update mutation
+// Create a new record
+export const CREATEJUVENTUS = gql`
+	mutation CreateJuventus($input: createJuventusInput) {
+		createJuventus(input: $input) {
+			juventus {
+				id
+				name
+				number
+				age
+				country
+				appearences
+				goals
+				minutesPlayed
+				position
+			}
+		}
+	}
+`;
+
+// Update a record
 export const UPDATEJUVENTUS = gql`
 	mutation UpdateJuventus($input: updateJuventusInput) {
 		updateJuventus(input: $input) {
