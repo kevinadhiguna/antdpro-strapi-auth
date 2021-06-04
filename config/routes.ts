@@ -61,6 +61,12 @@
     component: './Edit',
   },
   {
+    name: 'add.player',
+    icon: 'plusCircle',
+    path: '/add',
+    component: './AddPlayer',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },
