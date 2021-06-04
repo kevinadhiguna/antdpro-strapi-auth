@@ -17,7 +17,7 @@ export type TableListItem = {
   position?: string;
 };
 
-const PlayerList = () => {
+const PlayerList: React.FC = () => {
   let { loading, error, data } = useQuery(JUVENTUS);
 
   if (loading) {

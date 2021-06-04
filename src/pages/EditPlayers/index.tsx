@@ -32,7 +32,7 @@ type DataSourceType = {
   position?: string;
 };
 
-export default () => {
+const EditPlayers: React.FC = () => {
   const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([]);
   const [dataSource, setDataSource] = useState<DataSourceType[]>([]);
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
@@ -299,3 +299,5 @@ export default () => {
     </>
   );
 };
+
+export default EditPlayers;
