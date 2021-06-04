@@ -156,6 +156,7 @@ const EditPlayers: React.FC = () => {
       title: 'Name',
       dataIndex: 'name',
       key: 'name',
+      width: '10%',
     },
     {
       title: 'Avatar',
@@ -174,6 +175,7 @@ const EditPlayers: React.FC = () => {
       title: 'Number',
       dataIndex: 'number',
       key: 'number',
+      width: '10%',
     },
     {
       title: 'Age',
@@ -184,6 +186,7 @@ const EditPlayers: React.FC = () => {
       title: 'Country',
       dataIndex: 'country',
       key: 'country',
+      width: '13%',
     },
     {
       title: 'Appearence(s)',
@@ -194,21 +197,24 @@ const EditPlayers: React.FC = () => {
       title: 'Goal(s)',
       dataIndex: 'goals',
       key: 'goals',
+      width: '7%',
     },
     {
       title: 'Minutes Played',
       dataIndex: 'minutesPlayed',
       key: 'minutesPlayed',
+      width: '8%',
     },
     {
       title: 'Position',
       dataIndex: 'position',
       key: 'position',
+      width: '10%',
     },
     {
       title: 'Operation',
       valueType: 'option',
-      width: 200,
+      width: '12%',
       render: (text, record, _, action) => [
         <a
           key="editable"
