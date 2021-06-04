@@ -9,6 +9,7 @@ import { Result, Avatar } from 'antd';
 import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
+import { UPDATEJUVENTUS } from '@/graphql/mutation';
 import { useQuery } from '@apollo/client';
 
 const waitTime = (time: number = 100) => {
