@@ -91,14 +91,24 @@ const AddPlayer: React.FC = () => {
           />
           <ProFormDatePicker name="date" label="Date" />
           <ProFormDateRangePicker name="dateTime" label="Time Interval" />
-          <ProFormTextArea name="remark" label="Remarks" width="lg" placeholder="Please enter a note" />
+          <ProFormTextArea
+            name="remark"
+            label="Remarks"
+            width="lg"
+            placeholder="Please enter a note"
+          />
         </StepsForm.StepForm>
         <StepsForm.StepForm name="checkbox" title="Setting Parameters">
           <ProFormCheckbox.Group
             name="checkbox"
             label="Migration type"
             width="lg"
-            options={['Structure migration', 'Full migration', 'Incremental migration', 'Full calibration']}
+            options={[
+              'Structure migration',
+              'Full migration',
+              'Incremental migration',
+              'Full calibration',
+            ]}
           />
           <ProForm.Group>
             <ProFormText name="dbName" label="Business DB Username" />
@@ -110,7 +120,9 @@ const AddPlayer: React.FC = () => {
                 <ProFormCheckbox.Group
                   name="checkbox"
                   label="Migration type"
-                  options={dbName ? ['Full LOB', 'LOB out of sync', 'Restricted LOB'] : ['Full LOB']}
+                  options={
+                    dbName ? ['Full LOB', 'LOB out of sync', 'Restricted LOB'] : ['Full LOB']
+                  }
                 />
               );
             }}

@@ -37,7 +37,7 @@ export default () => {
   const [dataSource, setDataSource] = useState<DataSourceType[]>([]);
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
 
-	let { loading, error, data } = useQuery(JUVENTUS);
+  let { loading, error, data } = useQuery(JUVENTUS);
 
   if (loading) {
     return <Skeleton type="list" />;
@@ -151,7 +151,7 @@ export default () => {
   //   },
   // ];
 
-	const columns: ProColumns<DataSourceType>[] = [
+  const columns: ProColumns<DataSourceType>[] = [
     {
       title: 'Name',
       dataIndex: 'name',
@@ -205,7 +205,7 @@ export default () => {
       dataIndex: 'position',
       key: 'position',
     },
-		{
+    {
       title: 'Operation',
       valueType: 'option',
       width: 200,
