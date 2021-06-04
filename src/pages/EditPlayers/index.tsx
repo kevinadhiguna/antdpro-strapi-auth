@@ -38,13 +38,13 @@ const EditPlayers: React.FC = () => {
   const [dataSource, setDataSource] = useState<DataSourceType[]>([]);
   const [position, setPosition] = useState<'top' | 'bottom' | 'hidden'>('bottom');
 
-  let { loading, error, data } = useQuery(JUVENTUS);
+  let { loading: juventusLoading, error: juventusError, data: juventusData } = useQuery(JUVENTUS);
 
-  if (loading) {
+  if (juventusLoading) {
     return <Skeleton type="list" />;
   }
 
-  if (error) {
+  if (juventusError) {
     return (
       <Result
         status="error"
@@ -54,22 +54,22 @@ const EditPlayers: React.FC = () => {
     );
   }
 
-  let size = Object.keys(data.juventuses).length;
+  let size = Object.keys(juventusData.juventuses).length;
 
   const playerData: DataSourceType[] = [];
 
   for (let i = 0; i < size; i++) {
     playerData.push({
       key: i,
-      name: data.juventuses[i].name,
-      avatar: data.juventuses[i].profpic.url,
-      number: data.juventuses[i].number,
-      age: data.juventuses[i].age,
-      country: data.juventuses[i].country,
-      appearences: data.juventuses[i].appearences,
-      goals: data.juventuses[i].goals,
-      minutesPlayed: data.juventuses[i].minutesPlayed,
-      position: data.juventuses[i].position,
+      name: juventusData.juventuses[i].name,
+      avatar: juventusData.juventuses[i].profpic.url,
+      number: juventusData.juventuses[i].number,
+      age: juventusData.juventuses[i].age,
+      country: juventusData.juventuses[i].country,
+      appearences: juventusData.juventuses[i].appearences,
+      goals: juventusData.juventuses[i].goals,
+      minutesPlayed: juventusData.juventuses[i].minutesPlayed,
+      position: juventusData.juventuses[i].position,
     });
   }
 
