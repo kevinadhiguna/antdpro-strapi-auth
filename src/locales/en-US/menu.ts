@@ -32,6 +32,7 @@ export default {
   'menu.players': 'Players',
   'menu.editable.players': 'Edit Players',
   'menu.edit': 'Edit Template',
+  'menu.add.player': 'Add a Player',
   'menu.profile': 'Profile',
   'menu.profile.basic': 'Basic Profile',
   'menu.profile.advanced': 'Advanced Profile',
