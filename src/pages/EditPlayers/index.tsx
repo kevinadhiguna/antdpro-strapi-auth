@@ -10,7 +10,7 @@ import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
 import { UPDATEJUVENTUS } from '@/graphql/mutation';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -32,6 +32,18 @@ type DataSourceType = {
   minutesPlayed?: number;
   position?: string;
 };
+
+// type PlayerDataType = {
+//   name?: string;
+//   avatar?: string;
+//   number?: number;
+//   age?: number;
+//   country?: string;
+//   appearences?: number;
+//   goals?: number;
+//   minutesPlayed?: number;
+//   position?: string;
+// };
 
 const EditPlayers: React.FC = () => {
   const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([]);
@@ -73,84 +85,28 @@ const EditPlayers: React.FC = () => {
     });
   }
 
-  // const columns: ProColumns<DataSourceType>[] = [
-  //   {
-  //     title: 'Event Name',
-  //     dataIndex: 'title',
-  //     formItemProps: (form, { rowIndex }) => {
-  //       return {
-  //         rules: rowIndex > 2 ? [{ required: true, message: 'This is required' }] : [],
-  //       };
-  //     },
-  //     // Editing is not allowed on the second line
-  //     editable: (text, record, index) => {
-  //       return index !== 0;
-  //     },
-  //     width: '30%',
-  //   },
-  //   {
-  //     title: 'Status',
-  //     key: 'state',
-  //     dataIndex: 'state',
-  //     valueType: 'select',
-  //     valueEnum: {
-  //       all: { text: 'All', status: 'Default' },
-  //       open: {
-  //         text: 'Unsolved',
-  //         status: 'Error',
-  //       },
-  //       closed: {
-  //         text: 'Solved',
-  //         status: 'Success',
-  //       },
-  //     },
-  //   },
-  //   {
-  //     title: 'Description',
-  //     dataIndex: 'decs',
-  //     fieldProps: (from, { rowKey, rowIndex }) => {
-  //       if (from.getFieldValue([rowKey || '', 'title']) === '不好玩') {
-  //         return {
-  //           disabled: true,
-  //         };
-  //       }
-  //       if (rowIndex > 9) {
-  //         return {
-  //           disabled: true,
-  //         };
-  //       }
-  //       return {};
-  //     },
-  //   },
-  //   {
-  //     title: 'Activity Time',
-  //     dataIndex: 'created_at',
-  //     valueType: 'date',
-  //   },
-  //   {
-  //     title: 'Operation',
-  //     valueType: 'option',
-  //     width: 200,
-  //     render: (text, record, _, action) => [
-  //       <a
-  //         key="editable"
-  //         onClick={() => {
-  //           action?.startEditable?.(record.key);
-  //         }}
-  //       >
-  //         Edit
-  //       </a>,
-  //       <a
-  //         key="delete"
-  //         onClick={() => {
-  //           setDataSource(dataSource.filter((item) => item.key !== record.key));
-  //         }}
-  //       >
-  //         Delete
-  //       </a>,
-  //     ],
-  //   },
-  // ];
+	// const [updateJuventus] = useMutation(UPDATEJUVENTUS);
+	
+	// const handleUpdate = async (values: PlayerDataType) => {
+	// 	console.log(values.name);
+	// 	await updateJuventus({
+	// 		variables: {
+	// 			input: {
+	// 				id: "",
+	// 			},
+	// 			data: {
+	// 				name: values.name,
+	// 				number: values.number,
+	// 				age: values.age,
+	// 				country: values.country,
+	// 				appearences: values.appearences,
+	// 				goals: values.goals,
+	// 				minutesPlayed: values.minutesPlayed,
+	// 				position: values.position,
+	// 			}
+	// 		}
+	// 	});
+	// }
 
   const columns: ProColumns<DataSourceType>[] = [
     {
@@ -163,9 +119,8 @@ const EditPlayers: React.FC = () => {
       title: 'Avatar',
       dataIndex: 'avatar',
       render: (record: any) => (
-        // Log 'record' to console to see what is inside for debugging purpose
         <Avatar
-          size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} // <- Adjust avatars' responsiveness
+          size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }}
           shape="circle"
           src={record}
           alt="juventus player"
@@ -242,15 +197,6 @@ const EditPlayers: React.FC = () => {
       <EditableProTable<DataSourceType>
         rowKey="id"
         headerTitle="Editable Table"
-        maxLength={5}
-        // recordCreatorProps={
-        //   position !== 'hidden'
-        //     ? {
-        //         position: position as 'top',
-        //         record: () => ({ id: (Math.random() * 1000000).toFixed(0) }),
-        //       }
-        //     : false
-        // }
         toolBarRender={() => [
           <ProFormRadio.Group
             key="render"
@@ -285,7 +231,8 @@ const EditPlayers: React.FC = () => {
         editable={{
           type: 'multiple',
           editableKeys,
-          onSave: async () => {
+          onSave: async (values) => {
+            // await handleUpdate(values as PlayerDataType);
             await waitTime(2000);
           },
           onChange: setEditableRowKeys,
