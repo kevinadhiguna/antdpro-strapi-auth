@@ -28,7 +28,7 @@ const AddPlayer: React.FC = () => {
         onFinish={async () => {
           setLoading(true);
           await waitTime(1000);
-          message.success('提交成功');
+          message.success('Submitted successfully');
           setLoading(false);
         }}
         submitter={{
@@ -40,7 +40,7 @@ const AddPlayer: React.FC = () => {
                   form?.resetFields();
                 }}
               >
-                重置
+                Reset
               </Button>,
               step > 0 && (
                 <Button
@@ -49,7 +49,7 @@ const AddPlayer: React.FC = () => {
                     onPre?.();
                   }}
                 >
-                  上一步
+                  Back
                 </Button>
               ),
               <Button
@@ -60,20 +60,20 @@ const AddPlayer: React.FC = () => {
                   onSubmit?.();
                 }}
               >
-                下一步
+                Next
               </Button>,
             ];
           },
         }}
         formProps={{
           validateMessages: {
-            required: '此项为必填项',
+            required: 'This is required',
           },
         }}
       >
         <StepsForm.StepForm
           name="base"
-          title="创建实验"
+          title="Create experiment"
           onFinish={async () => {
             setLoading(true);
             await waitTime(2000);
@@ -83,52 +83,52 @@ const AddPlayer: React.FC = () => {
         >
           <ProFormText
             name="name"
-            label="实验名称"
+            label="Experiment name"
             width="md"
-            tooltip="最长为 24 位，用于标定的唯一 id"
-            placeholder="请输入名称"
+            tooltip="The longest is 24 digits, the unique id used for calibration"
+            placeholder="Please enter a name"
             rules={[{ required: true }]}
           />
-          <ProFormDatePicker name="date" label="日期" />
-          <ProFormDateRangePicker name="dateTime" label="时间区间" />
-          <ProFormTextArea name="remark" label="备注" width="lg" placeholder="请输入备注" />
+          <ProFormDatePicker name="date" label="Date" />
+          <ProFormDateRangePicker name="dateTime" label="Time Interval" />
+          <ProFormTextArea name="remark" label="Remarks" width="lg" placeholder="Please enter a note" />
         </StepsForm.StepForm>
-        <StepsForm.StepForm name="checkbox" title="设置参数">
+        <StepsForm.StepForm name="checkbox" title="Setting Parameters">
           <ProFormCheckbox.Group
             name="checkbox"
-            label="迁移类型"
+            label="Migration type"
             width="lg"
-            options={['结构迁移', '全量迁移', '增量迁移', '全量校验']}
+            options={['Structure migration', 'Full migration', 'Incremental migration', 'Full calibration']}
           />
           <ProForm.Group>
-            <ProFormText name="dbName" label="业务 DB 用户名" />
-            <ProFormDatePicker name="datetime" label="记录保存时间" width="sm" />
+            <ProFormText name="dbName" label="Business DB Username" />
+            <ProFormDatePicker name="datetime" label="Record retention time" width="sm" />
           </ProForm.Group>
           <ProFormDependency name={['dbName']}>
             {({ dbName }) => {
               return (
                 <ProFormCheckbox.Group
                   name="checkbox"
-                  label="迁移类型"
-                  options={dbName ? ['完整 LOB', '不同步 LOB', '受限制 LOB'] : ['完整 LOB']}
+                  label="Migration type"
+                  options={dbName ? ['Full LOB', 'LOB out of sync', 'Restricted LOB'] : ['Full LOB']}
                 />
               );
             }}
           </ProFormDependency>
         </StepsForm.StepForm>
-        <StepsForm.StepForm name="time" title="发布实验">
+        <StepsForm.StepForm name="time" title="Publish Experiment">
           <ProFormCheckbox.Group
             name="checkbox"
-            label="部署单元"
+            label="Deployment unit"
             rules={[
               {
                 required: true,
               },
             ]}
-            options={['部署单元1', '部署单元2', '部署单元3']}
+            options={['Deployment unit 1', 'Deployment unit 2', 'Deployment unit 3']}
           />
           <ProFormSelect
-            label="部署分组策略"
+            label="Deploy group strategy"
             name="remark"
             rules={[
               {
@@ -140,22 +140,22 @@ const AddPlayer: React.FC = () => {
             options={[
               {
                 value: '1',
-                label: '策略一',
+                label: 'Strategy One',
               },
-              { value: '2', label: '策略二' },
+              { value: '2', label: 'Strategy Two' },
             ]}
           />
           <ProFormSelect
-            label="Pod 调度策略"
+            label="Pod scheduling strategy"
             name="remark2"
             initialValue="2"
             width="md"
             options={[
               {
                 value: '1',
-                label: '策略一',
+                label: 'Strategy One',
               },
-              { value: '2', label: '策略二' },
+              { value: '2', label: 'Strategy Two' },
             ]}
           />
         </StepsForm.StepForm>
