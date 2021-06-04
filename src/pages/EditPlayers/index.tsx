@@ -85,28 +85,28 @@ const EditPlayers: React.FC = () => {
     });
   }
 
-	// const [updateJuventus] = useMutation(UPDATEJUVENTUS);
-	
-	// const handleUpdate = async (values: PlayerDataType) => {
-	// 	console.log(values.name);
-	// 	await updateJuventus({
-	// 		variables: {
-	// 			input: {
-	// 				id: "",
-	// 			},
-	// 			data: {
-	// 				name: values.name,
-	// 				number: values.number,
-	// 				age: values.age,
-	// 				country: values.country,
-	// 				appearences: values.appearences,
-	// 				goals: values.goals,
-	// 				minutesPlayed: values.minutesPlayed,
-	// 				position: values.position,
-	// 			}
-	// 		}
-	// 	});
-	// }
+  // const [updateJuventus] = useMutation(UPDATEJUVENTUS);
+
+  // const handleUpdate = async (values: PlayerDataType) => {
+  // 	console.log(values.name);
+  // 	await updateJuventus({
+  // 		variables: {
+  // 			input: {
+  // 				id: "",
+  // 			},
+  // 			data: {
+  // 				name: values.name,
+  // 				number: values.number,
+  // 				age: values.age,
+  // 				country: values.country,
+  // 				appearences: values.appearences,
+  // 				goals: values.goals,
+  // 				minutesPlayed: values.minutesPlayed,
+  // 				position: values.position,
+  // 			}
+  // 		}
+  // 	});
+  // }
 
   const columns: ProColumns<DataSourceType>[] = [
     {
