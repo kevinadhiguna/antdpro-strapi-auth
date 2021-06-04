@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-// GraphQL Login Query
+// Login mutation
 export const LOGIN = gql`
   mutation Login($input: UsersPermissionsLoginInput!) {
     login(input: $input) {
@@ -20,4 +20,27 @@ export const LOGIN = gql`
       }
     }
   }
+`;
+
+// Update mutation
+export const UPDATEJUVENTUS = gql`
+	mutation UpdateJuventus($input: updateJuventusInput) {
+		updateJuventus(input: $input) {
+			juventus {
+				id
+				name
+				number
+				age
+				country
+				appearences
+				goals
+				minutesPlayed
+				minutesPlayed
+				position
+				profpic {
+					name
+				}
+			}
+		}
+	}  
 `;
