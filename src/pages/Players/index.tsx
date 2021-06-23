@@ -62,12 +62,11 @@ const PlayerList: React.FC = () => {
     {
       title: 'Avatar',
       dataIndex: 'avatar',
-      render: (record: any) => (
-        // Log 'record' to console to see what is inside for debugging purpose
+      render: (avatar: string) => (
         <Avatar
           size={{ xs: 24, sm: 32, md: 40, lg: 64, xl: 80, xxl: 100 }} // <- Adjust avatars' responsiveness
           shape="circle"
-          src={record}
+          src={avatar}
           alt="juventus player"
         />
       ),
