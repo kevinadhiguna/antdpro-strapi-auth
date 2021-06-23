@@ -74,7 +74,7 @@ const EditPlayers: React.FC = () => {
     playerData.push({
       key: i,
       name: juventusData.juventuses[i].name,
-      avatar: juventusData.juventuses[i].profpic.url,
+      avatar: juventusData.juventuses[i].profpic?.url,
       number: juventusData.juventuses[i].number,
       age: juventusData.juventuses[i].age,
       country: juventusData.juventuses[i].country,
