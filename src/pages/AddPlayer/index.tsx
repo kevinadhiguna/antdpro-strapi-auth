@@ -12,6 +12,8 @@ import ProForm, {
 import ProCard from '@ant-design/pro-card';
 import { Button, message } from 'antd';
 
+import DevelopmentAlert from '@/components/DevelopmentAlert';
+
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -23,7 +25,9 @@ const waitTime = (time: number = 100) => {
 const AddPlayer: React.FC = () => {
   const [loading, setLoading] = useState(false);
   return (
-    <ProCard>
+    <>
+      <DevelopmentAlert />
+      <ProCard>
       <StepsForm
         onFinish={async () => {
           setLoading(true);
@@ -173,6 +177,7 @@ const AddPlayer: React.FC = () => {
         </StepsForm.StepForm>
       </StepsForm>
     </ProCard>
+    </>
   );
 };
 

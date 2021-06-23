@@ -12,6 +12,8 @@ import { JUVENTUS } from '@/graphql/query';
 import { UPDATEJUVENTUS } from '@/graphql/mutation';
 import { useMutation, useQuery } from '@apollo/client';
 
+import DevelopmentAlert from '@/components/DevelopmentAlert';
+
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -194,6 +196,7 @@ const EditPlayers: React.FC = () => {
 
   return (
     <>
+      <DevelopmentAlert />
       <EditableProTable<DataSourceType>
         rowKey="id"
         headerTitle="Editable Table"

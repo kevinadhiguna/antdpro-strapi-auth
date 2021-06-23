@@ -5,6 +5,8 @@ import ProField from '@ant-design/pro-field';
 import { ProFormRadio } from '@ant-design/pro-form';
 import ProCard from '@ant-design/pro-card';
 
+import DevelopmentAlert from '@/components/DevelopmentAlert';
+
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -125,6 +127,7 @@ const EditTemplate: React.FC = () => {
 
   return (
     <>
+      <DevelopmentAlert />
       <EditableProTable<DataSourceType>
         rowKey="id"
         headerTitle="Editable Table"
