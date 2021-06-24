@@ -84,3 +84,14 @@ export const UPLOADPROFPIC = gql`
     }
   }
 `;
+
+// Delete a record
+export const DELETEJUVENTUS = gql`
+  mutation deleteJuventus($input: deleteJuventusInput) {
+    deleteJuventus(input: $input) {
+      juventus {
+        id
+      }
+    }
+  }
+`;
