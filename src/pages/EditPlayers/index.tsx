@@ -171,7 +171,7 @@ const EditPlayers: React.FC = () => {
       width: '10%',
     },
     {
-      title: 'Operation',
+      title: 'Action',
       valueType: 'option',
       width: '12%',
       render: (text, record, _, action) => [
