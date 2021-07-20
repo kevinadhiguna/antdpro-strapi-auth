@@ -5,7 +5,7 @@ import ProField from '@ant-design/pro-field';
 import { ProFormRadio } from '@ant-design/pro-form';
 import ProCard from '@ant-design/pro-card';
 
-import { Result, Avatar } from 'antd';
+import { Result, Avatar, Button } from 'antd';
 import Skeleton from '@ant-design/pro-skeleton';
 
 import { JUVENTUS } from '@/graphql/query';
@@ -13,6 +13,7 @@ import { UPDATEJUVENTUS } from '@/graphql/mutation';
 import { useMutation, useQuery } from '@apollo/client';
 
 import DevelopmentAlert from '@/components/DevelopmentAlert';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
 const waitTime = (time: number = 100) => {
   return new Promise((resolve) => {
@@ -174,22 +175,20 @@ const EditPlayers: React.FC = () => {
       valueType: 'option',
       width: '12%',
       render: (text, record, _, action) => [
-        <a
-          key="editable"
+        <Button
+          type="primary"
+          icon={<EditOutlined />}
           onClick={() => {
             action?.startEditable?.(record.key);
           }}
-        >
-          Edit
-        </a>,
-        <a
-          key="delete"
+        />,
+        <Button
+          danger
+          icon={<DeleteOutlined />}
           onClick={() => {
             setDataSource(dataSource.filter((item) => item.key !== record.key));
           }}
-        >
-          Delete
-        </a>,
+        />,
       ],
     },
   ];
