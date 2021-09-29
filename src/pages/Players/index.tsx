@@ -25,6 +25,9 @@ const PlayerList: React.FC = () => {
   }
 
   if (error) {
+    // Debugging
+    console.log('Error :', error.message);
+
     return (
       <Result
         status="error"
