@@ -12,6 +12,8 @@ Implementation of authentication in Ant Design Pro v5 with Strapi API powered by
 
 </div>
 
+<br />
+
 ## Demo
 
 <div align="center">
@@ -21,6 +23,8 @@ Implementation of authentication in Ant Design Pro v5 with Strapi API powered by
 <br/>
 Here is a quick guide for how to use :
 
+<br />
+
 ## Environment Prepare
 
 Install `node_modules`:
@@ -28,6 +32,8 @@ Install `node_modules`:
 ```bash
 yarn
 ```
+
+<br />
 
 ## Provided Scripts
 
@@ -65,13 +71,18 @@ yarn lint:fix
 yarn test
 ```
 
+<br />
+
 ## 📦 Looking for Ant Design Pro with URQL GraphQL client ?
 
 Here is the repo you might be looking for : [https://github.com/kevinadhiguna/antdpro-strapi-urql](https://github.com/kevinadhiguna/antdpro-strapi-urql)
+
+<br />
 
 ## 🔎 Looking for the Server-side ?
 
 Here is the Strapi app that you can use with this project : [https://github.com/kevinadhiguna/strapi-dockerize](https://github.com/kevinadhiguna/strapi-dockerize)
 
+<br />
 
 ![Hello !](https://api.visitorbadge.io/api/VisitorHit?user=kevinadhiguna&repo=antdpro-strapi-auth&label=thanks%20for%20dropping%20in%20!&labelColor=%23000000&countColor=%23FFFFFF)
